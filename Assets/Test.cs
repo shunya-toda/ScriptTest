@@ -9,8 +9,30 @@ public class Boss
     public void Magic(int magic)
     {
         this.mp -= magic;
-        Debug.Log("魔法攻撃をした。残りMPは" +mp);
-        
+       
+        int[] mahou = new int[11];
+
+        mahou[0] = mp;
+        mahou[1] = mahou[0] - magic;
+        mahou[2] = mahou[1] - magic;
+        mahou[3] = mahou[2] - magic;
+        mahou[4] = mahou[3] - magic;
+        mahou[5] = mahou[4] - magic;
+        mahou[6] = mahou[5] - magic;
+        mahou[7] = mahou[6] - magic;
+        mahou[8] = mahou[7] - magic;
+        mahou[9] = mahou[8] - magic;
+        mahou[10] = mahou[9] - magic;
+
+        for (int i = 0; i < mahou.Length; i++)
+            if(mahou[i]>=0)
+            {
+                Debug.Log("魔法攻撃をした。残りMPは" + mahou[i]);
+            }
+            else
+            {
+                Debug.Log("MPが足りないため魔法が使えない。");
+            }
     }
 }
 public class Test : MonoBehaviour
@@ -20,15 +42,7 @@ public class Test : MonoBehaviour
         Boss lastboss = new Boss();
         lastboss.Magic(5);
 
-        int mag = 53;
-        for (int i=5;i<=11;i++)
-        {
-            mag -= i;
-        }
-        if(mag<0)
-        {
-            Debug.Log("MPが足りないため魔法が使えない。");
-        }
+        
 
 
         int[] array = new int[5];
